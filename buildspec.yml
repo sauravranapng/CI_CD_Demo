@@ -1,0 +1,19 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+#      java: corretto11     # optional; remove if not used
+  pre_build:
+    commands:
+      - echo "Starting build"
+  build:
+    commands:
+      - echo "Packaging application into artifact"
+      - mkdir -p build
+      - cp -r index.html build/
+      - zip -r artifact.zip build/
+artifacts:
+  files:
+    - artifact.zip
+  discard-paths: yes
